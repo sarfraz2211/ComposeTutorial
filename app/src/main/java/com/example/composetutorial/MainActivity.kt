@@ -6,11 +6,16 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import com.example.composetutorial.ui.theme.ComposeTutorialTheme
 
 class MainActivity : ComponentActivity() {
@@ -18,30 +23,40 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            ComposeTutorialTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
+            Text(text = "Hello Compose Text")
         }
     }
 }
 
+@Preview(showBackground = true, name = "First Preview ", heightDp = 20, widthDp = 80)
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun ShowText(name: String = "Sarfraz") {
     Text(
-        text = "Hello $name!",
-        modifier = modifier
+        text = "Hello $name",
+        fontStyle = FontStyle.Italic,
+        fontSize = 12.sp,
+        fontWeight = FontWeight.ExtraBold,
+        color = Color.Blue
+
     )
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, name = "Second Preview")
 @Composable
-fun GreetingPreview() {
-    ComposeTutorialTheme {
-        Greeting("Android")
-    }
+private fun ShowAnotherText(name: String = "Compose Tutorila") {
+    Text(
+        text = "Hello $name",
+        fontStyle = FontStyle.Italic,
+        fontSize = 12.sp,
+        fontWeight = FontWeight.ExtraBold,
+        color = Color.Magenta
+
+    )
+}
+@Preview
+@Composable
+private fun EnableButton() {
+   Button(onClick = { }) {
+       Text(text = "Click")
+   }
 }
