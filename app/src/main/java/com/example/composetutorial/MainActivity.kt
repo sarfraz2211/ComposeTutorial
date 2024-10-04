@@ -60,3 +60,11 @@ private fun EnableButton() {
        Text(text = "Click")
    }
 }
+
+@Preview
+@Composable
+private fun EnableButton2() {
+    Button(onClick = { }) {
+        Text(text = "Click")
+    }
+}
