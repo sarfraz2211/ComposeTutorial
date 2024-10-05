@@ -9,12 +9,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.composetutorial.ui.theme.ComposeTutorialTheme
 
@@ -23,7 +27,18 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            Text(text = "Hello Compose Text")
+            Text(
+                text = "Hello Compose Text",
+                fontStyle = FontStyle.Italic,
+                fontSize = 12.sp,
+                fontWeight = FontWeight.ExtraBold,
+                color = Color.Blue,
+                modifier = Modifier.padding(15.dp)
+            )
+            ShowText("Sarfraz")
+            ShowAnotherText("Compose Tutorila")
+            EnableButton()
+            EnableButton2()
         }
     }
 }
@@ -67,4 +82,15 @@ private fun EnableButton2() {
     Button(onClick = { }) {
         Text(text = "Click")
     }
+}
+@Preview
+@Composable
+private fun ShowTextInput() {
+    val state = remember { mutableStateOf("") }
+    TextField(
+        value = state.value, onValueChange = {
+            state.value = it
+        },
+        label = { Text(text = "Enter message") },
+    )
 }
